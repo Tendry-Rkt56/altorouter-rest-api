@@ -22,3 +22,8 @@ export function flashMessage(valeur, type, container)
      container.appendChild(div)
 
 }
+
+export function checkInput(input)
+{
+     return input.value !== ""
+}

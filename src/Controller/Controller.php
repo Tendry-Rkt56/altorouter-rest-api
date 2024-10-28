@@ -14,10 +14,10 @@ class Controller
 
      }
 
-     public function getData()
+     public function getData(bool $associative = false)
      {
           $data = file_get_contents('php://input');
-          return json_decode($data);
+          return json_decode($data, $associative);
      }
 
      public function json(array $data)

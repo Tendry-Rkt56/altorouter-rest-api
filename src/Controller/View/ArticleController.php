@@ -12,4 +12,9 @@ class ArticleController extends Controller
           return $this->render('articles.index');
      }
 
+     public function create()
+     {
+          return $this->render('articles.create');
+     }
+
 }

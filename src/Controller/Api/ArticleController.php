@@ -14,6 +14,13 @@ class ArticleController extends Controller
           return $this->json($articles);
      }
 
+     public function create()
+     {
+          $data = $this->getData(true);
+          $create = $this->manager->getEntity(Article::class)->create($data);
+          return $this->json(['response' => $create]);
+     }
+
      public function delete()
      {
           $id = $this->getData()->id;

@@ -21,6 +21,30 @@ export async function recupData(route, loader)
 
 } 
 
+
+export async function sendData(route, data)
+{
+     try {
+          const response = await fetch(route, {
+               method: "POST",
+               headers: {
+                    "Content-Type" : 'application/json',
+               },
+               body: JSON.stringify(data)
+          })
+          if (response.ok) {
+               const result = await response.json()
+               return result.response
+          }
+          else {
+               throw new Error('Erreur')
+          }
+     }
+     catch(error) {
+          return error.message
+     }
+}
+
 export async function deleteData(route, id)
 {
      try {

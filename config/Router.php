@@ -11,10 +11,12 @@ $router = new AltoRouter();
 $container = new Container();
 
 $router->map('GET', '/articles', fn () => $container->getController(ViewArticleController::class)->index());
+$router->map('GET', '/articles/create', fn () => $container->getController(ViewArticleController::class)->create());
 
 //---Routes pour les api
 
 $router->map('GET', '/api/articles', fn () => $container->getController(ArticleController::class)->index($_GET));
+$router->map('POST', '/api/articles/create', fn () => $container->getController(ArticleController::class)->create());
 $router->map('POST', '/api/articles/delete', fn () => $container->getController(ArticleController::class)->delete());
 
 //---Routes pour les api

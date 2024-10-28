@@ -25,8 +25,8 @@ class Article extends Entity
           $query = "INSERT INTO articles (name, price) VALUES (:name, :price)";
           $result = $this->db->getConn()->prepare($query);
           extract($data);
-          $result->bindValue(':name', $nom, \PDO::PARAM_STR);
-          $result->bindValue(':price', $prix, \PDO::PARAM_INT);
+          $result->bindValue(':name', $name, \PDO::PARAM_STR);
+          $result->bindValue(':price', $price, \PDO::PARAM_INT);
           return $result->execute();
      }
 
