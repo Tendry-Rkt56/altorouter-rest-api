@@ -9,11 +9,13 @@ class Article extends Entity
      {
           $sql = "SELECT * FROM articles WHERE id > 0";
           if (isset($data['search'])) {
-               $sql .= " AND articles.name LIKE '%$data[search]'";
+               $search = $this->db->getConn()->quote('%'.$data['search'].'%');
+               $sql .= " AND name LIKE $search";
           }
           if (isset($data['price'])) {
-               $sql .= " AND articles.price <= '%$data[price]'";
+               $sql .= " AND price <= '%$data[price]'";
           }
+          // return ['id' => 1, 'name' => $sql];
           $articles = $this->db->getConn()->query($sql);
           return $articles->fetchAll(\PDO::FETCH_OBJ);
      }

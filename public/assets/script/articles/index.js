@@ -4,6 +4,7 @@ import { createCell, flashMessage } from "../functions.js"
 const tables = document.querySelector('.tables')
 const loader = document.querySelector('.loader')
 const flash = document.querySelector('.flashMessage')
+const search = document.getElementById('search')
 const port = window.location.port
 
 
@@ -17,23 +18,25 @@ function createTd(valeur, options = {})
      return node
 }
 
-
-
-async function deleteElement()
+async function dataList()
 {
-     const btnSuppr = document.querySelectorAll('.suppr')
-     btnSuppr.forEach((element, index) => {
-          element.addEventListener('click', async (e) => {
-               const tr = e.target.closest('tr')
-               const dataId = parseInt(tr.getAttribute('data'))
-               const response = await deleteData(`http://localhost:${port}/api/articles/delete`, dataId)
-               tr.remove()
-               if (response) flashMessage("Article supprimé", 'danger', flash)
-               else flashMessage(response, 'danger', flash)
-          })
-     })
+     const data = await recupData(`http://localhost:${port}/api/articles`, loader)
+     return data
 }
 
+search.addEventListener('input', async () => {
+     
+     const data = await dataList()
+
+     if (search.value !== "") {
+          const value = search.value
+          const newData = data.filter(element => element.name.toLowerCase().includes(value.toLowerCase()))
+          populateTable(newData, tables)
+     }
+     else {
+          populateTable(data, tables)
+     }
+})
 
 // Fonction pour peupler le tableau avec les données
 function populateTable(data, container) 
@@ -78,8 +81,23 @@ function populateTable(data, container)
      container.appendChild(tbody)
 }
 
+async function deleteElement()
+{
+     const btnSuppr = document.querySelectorAll('.suppr')
+     btnSuppr.forEach((element, index) => {
+          element.addEventListener('click', async (e) => {
+               const tr = e.target.closest('tr')
+               const dataId = parseInt(tr.getAttribute('data'))
+               const response = await deleteData(`http://localhost:${port}/api/articles/delete`, dataId)
+               tr.remove()
+               if (response) flashMessage("Article supprimé", 'danger', flash)
+               else flashMessage(response, 'danger', flash)
+          })
+     })
+}
+
 (async function append() {
-     const data = await recupData(`http://localhost:${port}/api/articles`, loader)
+     const data = await dataList()
      populateTable(data, tables)
      await deleteElement()
 })()
