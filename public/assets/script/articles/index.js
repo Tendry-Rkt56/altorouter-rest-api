@@ -54,11 +54,15 @@ function populateTable(data, container)
      const tbody = document.createElement('tbody')
      data.forEach(element => {
           const tr = document.createElement('tr')
+          const price = element.price.toLocaleString('fr-FR', {
+               minimumFractionDigits: 2,
+               maximumFractionDigits: 2,
+          })
           tr.setAttribute('data', element.id)
 
           tr.appendChild(createCell(element.id))
           tr.appendChild(createCell(element.name))
-          tr.appendChild(createCell(element.price))
+          tr.appendChild(createCell(price + ' Ar', {class: 'fw-bolder'}))
 
           const actionsCell = createCell('', { 'class': 'd-flex gap-1' })
           const edit = document.createElement('a')
