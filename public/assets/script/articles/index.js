@@ -1,4 +1,5 @@
 import { recupData } from "../data.js"
+import { createCell } from "../functions.js"
 
 const tables = document.querySelector('.tables')
 
@@ -12,17 +13,6 @@ function createTd(valeur, options = {})
      return node
 }
 
-
-// Fonction pour créer un élément de cellule de table <td> ou <th>
-function createCell(content, options = {}) 
-{
-     const cell = options.header ? document.createElement('th') : document.createElement('td')
-     cell.textContent = content
-     for (const key in options) {
-          if (key !== 'header') cell.setAttribute(key, options[key])
-     }
-     return cell
-}
 
 // Fonction pour peupler le tableau avec les données
 function populateTable(data, container) 
