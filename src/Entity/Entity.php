@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Entity;
-use Config\DataBase;
+
+use Services\DataBase;
 
 class Entity
 {

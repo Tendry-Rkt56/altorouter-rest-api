@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Config\DataBase;
+use Services\DataBase;
 
 class Manager 
 {

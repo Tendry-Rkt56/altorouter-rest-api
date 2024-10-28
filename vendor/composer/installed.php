@@ -3,7 +3,7 @@
         'name' => 'tendry/api',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'b51ad0ec0fc46e3b999b65d46c290d489fbe6099',
+        'reference' => 'e1fe84092cd4de6ffdbf3b62784a82a948515318',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'tendry/api' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'b51ad0ec0fc46e3b999b65d46c290d489fbe6099',
+            'reference' => 'e1fe84092cd4de6ffdbf3b62784a82a948515318',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

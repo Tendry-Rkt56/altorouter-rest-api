@@ -11,6 +11,7 @@ class Controller
      public function __construct(protected Manager $manager)
      {
           if (session_status() == PHP_SESSION_NONE) session_start();
+
      }
 
      public function json(array $data)
