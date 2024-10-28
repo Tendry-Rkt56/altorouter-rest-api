@@ -21,3 +21,12 @@ html {
      left:40%;
      transform:translate(-50%, -50%);
 }
+
+.flashMessage {
+     transition:0.4s;
+     transform:translateX(-1000px);
+}
+
+.flashMessage.active {
+     transform:translateX(0);
+}

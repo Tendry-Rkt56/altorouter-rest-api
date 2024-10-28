@@ -1,8 +1,9 @@
 import { deleteData, recupData } from "../data.js"
-import { createCell } from "../functions.js"
+import { createCell, flashMessage } from "../functions.js"
 
 const tables = document.querySelector('.tables')
 const loader = document.querySelector('.loader')
+const flash = document.querySelector('.flashMessage')
 const port = window.location.port
 
 
@@ -16,6 +17,8 @@ function createTd(valeur, options = {})
      return node
 }
 
+
+
 async function deleteElement()
 {
      const btnSuppr = document.querySelectorAll('.suppr')
@@ -25,7 +28,8 @@ async function deleteElement()
                const dataId = parseInt(tr.getAttribute('data'))
                const response = await deleteData(`http://localhost:${port}/api/articles/delete`, dataId)
                tr.remove()
-               console.log(response)
+               if (response) flashMessage("Article supprimé", 'danger', flash)
+               else flashMessage(response, 'danger', flash)
           })
      })
 }

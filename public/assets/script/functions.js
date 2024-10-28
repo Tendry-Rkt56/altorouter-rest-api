@@ -8,3 +8,17 @@ export function createCell(content, options = {})
      }
      return cell
 }
+
+export function flashMessage(valeur, type, container)
+{
+     const div = document.createElement('div')
+     div.textContent = valeur
+     div.setAttribute('class', `alert alert-${type} container d-flex align-items-center justify-content-center`)
+     setTimeout(() => {
+          container.classList.remove('active')
+          div.remove()
+     }, 4000)
+     container.classList.add('active')
+     container.appendChild(div)
+
+}

@@ -32,14 +32,14 @@ export async function deleteData(route, id)
                body: JSON.stringify({id: id})
           })
           if (response.ok) {
-               const result = await response.text()
-               console.log(result)
+               const result = await response.json()
+               return result.response
           }
           else {
                throw new Error('Erreur')
           }
      }
      catch(error) {
-          console.log(error.message)
+          return error.message
      }
 }
