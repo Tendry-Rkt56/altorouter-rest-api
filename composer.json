@@ -2,7 +2,8 @@
     "name": "tendry/api",
     "autoload": {
         "psr-4": {
-            "Tendry\\Api\\": "src/"
+            "App\\": "src/",
+            "Services\\": "services/"
         }
     },
     "authors": [
