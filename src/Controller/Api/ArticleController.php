@@ -14,4 +14,11 @@ class ArticleController extends Controller
           return $this->json($articles);
      }
 
+     public function delete()
+     {
+          $id = $this->getData()->id;
+          $delete = $this->manager->getEntity(Article::class)->delete($id);
+          return $this->json(['response' => $delete]);
+     }
+
 }

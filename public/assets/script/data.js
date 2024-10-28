@@ -1,7 +1,7 @@
 export async function recupData(route, loader)
 {
      try {
-          // loader.style.display = 'block'
+          loader.style.display = 'block'
           await new Promise(resolve => setTimeout(resolve, 500))
           const data = await fetch(route)
           if (data.ok) {
@@ -31,15 +31,15 @@ export async function deleteData(route, id)
                },
                body: JSON.stringify({id: id})
           })
-          if (data.ok) {
-               const result = await response.json()
-               return result.response
+          if (response.ok) {
+               const result = await response.text()
+               console.log(result)
           }
           else {
                throw new Error('Erreur')
           }
      }
-     catch {
+     catch(error) {
           console.log(error.message)
      }
 }

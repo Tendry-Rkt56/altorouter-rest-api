@@ -14,6 +14,12 @@ class Controller
 
      }
 
+     public function getData()
+     {
+          $data = file_get_contents('php://input');
+          return json_decode($data);
+     }
+
      public function json(array $data)
      {
           echo json_encode($data);

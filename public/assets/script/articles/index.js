@@ -1,4 +1,4 @@
-import { recupData } from "../data.js"
+import { deleteData, recupData } from "../data.js"
 import { createCell } from "../functions.js"
 
 const tables = document.querySelector('.tables')
@@ -16,13 +16,16 @@ function createTd(valeur, options = {})
      return node
 }
 
-function deleteElement()
+async function deleteElement()
 {
      const btnSuppr = document.querySelectorAll('.suppr')
      btnSuppr.forEach((element, index) => {
-          element.addEventListener('click', (e) => {
+          element.addEventListener('click', async (e) => {
                const tr = e.target.closest('tr')
+               const dataId = parseInt(tr.getAttribute('data'))
+               const response = await deleteData(`http://localhost:${port}/api/articles/delete`, dataId)
                tr.remove()
+               console.log(response)
           })
      })
 }
@@ -74,6 +77,6 @@ function populateTable(data, container)
 (async function append() {
      const data = await recupData(`http://localhost:${port}/api/articles`, loader)
      populateTable(data, tables)
-     deleteElement()
+     await deleteElement()
 })()
 

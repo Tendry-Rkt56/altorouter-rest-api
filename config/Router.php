@@ -12,7 +12,12 @@ $container = new Container();
 
 $router->map('GET', '/articles', fn () => $container->getController(ViewArticleController::class)->index());
 
+//---Routes pour les api
+
 $router->map('GET', '/api/articles', fn () => $container->getController(ArticleController::class)->index());
+$router->map('POST', '/api/articles/delete', fn () => $container->getController(ArticleController::class)->delete());
+
+//---Routes pour les api
 
 
 $match = $router->match();
