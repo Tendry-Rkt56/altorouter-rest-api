@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Tendry\\Api\\' => array($baseDir . '/src'),
+    'Services\\' => array($baseDir . '/services'),
+    'App\\' => array($baseDir . '/src'),
 );
