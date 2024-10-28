@@ -13,3 +13,10 @@ html {
      top:20%;
      left:4%;
 }
+
+.loader {
+     position:absolute;
+     top:70%;
+     left:40%;
+     transform:translate(-50%, -50%);
+}

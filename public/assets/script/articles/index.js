@@ -2,6 +2,7 @@ import { recupData } from "../data.js"
 import { createCell } from "../functions.js"
 
 const tables = document.querySelector('.tables')
+const port = window.location.port
 
 function createTd(valeur, options = {})
 {
@@ -57,7 +58,7 @@ function populateTable(data, container)
 }
 
 (async function append() {
-     const data = await recupData('http://localhost:8000/api/articles')
+     const data = await recupData(`http://localhost:${port}/api/articles`)
      populateTable(data, tables)
 })()
 
