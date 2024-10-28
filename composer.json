@@ -11,5 +11,7 @@
             "email": "tendryzephyrin@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "altorouter/altorouter": "^2.0"
+    }
 }
