@@ -2,7 +2,9 @@ import { recupData } from "../data.js"
 import { createCell } from "../functions.js"
 
 const tables = document.querySelector('.tables')
+const loader = document.querySelector('.loader')
 const port = window.location.port
+
 
 function createTd(valeur, options = {})
 {
@@ -12,6 +14,17 @@ function createTd(valeur, options = {})
           node.classList.add(options.class)
      }
      return node
+}
+
+function deleteElement()
+{
+     const btnSuppr = document.querySelectorAll('.suppr')
+     btnSuppr.forEach((element, index) => {
+          element.addEventListener('click', (e) => {
+               const tr = e.target.closest('tr')
+               tr.remove()
+          })
+     })
 }
 
 
@@ -31,6 +44,7 @@ function populateTable(data, container)
      const tbody = document.createElement('tbody')
      data.forEach(element => {
           const tr = document.createElement('tr')
+          tr.setAttribute('data', element.id)
 
           tr.appendChild(createCell(element.id))
           tr.appendChild(createCell(element.name))
@@ -43,7 +57,7 @@ function populateTable(data, container)
           edit.textContent = "Éditer"
           
           const suppr = document.createElement('button')
-          suppr.setAttribute('class', 'btn btn-sm btn-danger')
+          suppr.setAttribute('class', 'btn btn-sm btn-danger suppr')
           suppr.textContent = "Supprimer"
 
           actionsCell.appendChild(edit)
@@ -58,7 +72,8 @@ function populateTable(data, container)
 }
 
 (async function append() {
-     const data = await recupData(`http://localhost:${port}/api/articles`)
+     const data = await recupData(`http://localhost:${port}/api/articles`, loader)
      populateTable(data, tables)
+     deleteElement()
 })()
 

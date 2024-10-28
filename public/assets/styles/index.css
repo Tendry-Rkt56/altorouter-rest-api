@@ -15,8 +15,9 @@ html {
 }
 
 .loader {
+     display:'none';
      position:absolute;
-     top:70%;
+     top:50%;
      left:40%;
      transform:translate(-50%, -50%);
 }
