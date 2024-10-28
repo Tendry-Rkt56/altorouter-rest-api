@@ -20,4 +20,10 @@ class Controller
           header("Content-Type : application/json");
      }
 
+     public function render(string $view)
+     {
+          $vue = "../templates/".str_replace('.','/', $view).'.html';
+          require_once $vue;
+     }
+
 }

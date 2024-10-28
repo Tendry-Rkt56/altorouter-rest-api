@@ -1,13 +1,16 @@
 <?php
 
 use App\Container;
-use App\Controller\ArticleController;
+use App\Controller\Api\ArticleController;
+use App\Controller\View\ArticleController as ViewArticleController;
 
 require_once '../vendor/altorouter/altorouter/AltoRouter.php';
 
 $router = new AltoRouter();
 
 $container = new Container();
+
+$router->map('GET', '/articles', fn () => $container->getController(ViewArticleController::class)->index());
 
 $router->map('GET', '/api/articles', fn () => $container->getController(ArticleController::class)->index());
 

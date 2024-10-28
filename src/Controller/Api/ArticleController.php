@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Api;
 
+use App\Controller\Controller;
 use App\Entity\Article;
 
 class ArticleController extends Controller

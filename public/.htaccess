@@ -4,5 +4,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteCond %{REQUEST_URI} !^/css/
 RewriteCond %{REQUEST_URI} !^/script/
+RewriteCond %{REQUEST_URI} !^/assets/
 
 RewriteRule ^(.*)$ index.php [QSA,L]
