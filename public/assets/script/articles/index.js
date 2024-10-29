@@ -101,7 +101,10 @@ async function deleteElement()
      })
 }
 
-
+if (storage) {
+     if (Object.keys(storage).length != 0) flashMessage(storage.message, storage.type, flash)
+     localStorage.removeItem()
+}
 
 (async function append() {
      const data = await dataList()
