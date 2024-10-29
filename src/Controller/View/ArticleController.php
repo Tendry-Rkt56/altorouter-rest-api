@@ -17,4 +17,9 @@ class ArticleController extends Controller
           return $this->render('articles.create');
      }
 
+     public function edit(array $data = [])
+     {
+          return $this->render('articles.edit');
+     }
+
 }

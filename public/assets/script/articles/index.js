@@ -6,6 +6,7 @@ const loader = document.querySelector('.loader')
 const flash = document.querySelector('.flashMessage')
 const search = document.getElementById('search')
 const port = window.location.port
+const storage = JSON.parse(localStorage.getItem('message'))
 
 
 function createTd(valeur, options = {})
@@ -66,7 +67,7 @@ function populateTable(data, container)
 
           const actionsCell = createCell('', { 'class': 'd-flex gap-1' })
           const edit = document.createElement('a')
-          edit.setAttribute('href', '#')
+          edit.setAttribute('href', '/articles/edit?id='+element.id)
           edit.setAttribute('class', 'btn btn-sm btn-primary')
           edit.textContent = "Éditer"
           
@@ -99,6 +100,8 @@ async function deleteElement()
           })
      })
 }
+
+
 
 (async function append() {
      const data = await dataList()

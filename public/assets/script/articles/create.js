@@ -15,6 +15,10 @@ form.addEventListener('submit', async (e) => {
           }
           const response = await sendData(`http://localhost:${port}/api/articles/create`, data)
           if (response) {
+               localStorage.setItem("message",{
+                    message: "Nouvel article crée",
+                    type: "success",    
+               })
                window.location.href = "/articles"
           }
      }

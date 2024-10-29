@@ -30,13 +30,20 @@ class Article extends Entity
           return $result->execute();
      }
 
+     public function find(int $id)
+     {
+          $query = "SELECT * FROM articles WHERE id = $id";
+          $result = $this->db->getConn()->query($query);
+          return $result->fetch(\PDO::FETCH_OBJ);
+     }
+
      public function update (int $id, array $data = []): bool
      {
-          $query = "UPDATE articles SET name = :name, prix = :price WHERE id = :id";
+          $query = "UPDATE articles SET name = :name, price = :price WHERE id = :id";
           $result = $this->db->getConn()->prepare($query);
           extract($data);
-          $result->bindValue(":name", $nom, \PDO::PARAM_STR);
-          $result->bindValue(":price", $prix, \PDO::PARAM_INT);
+          $result->bindValue(":name", $name, \PDO::PARAM_STR);
+          $result->bindValue(":price", $price, \PDO::PARAM_INT);
           $result->bindValue(":id", $id, \PDO::PARAM_INT);
           return $result->execute();
      }

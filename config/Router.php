@@ -12,10 +12,13 @@ $container = new Container();
 
 $router->map('GET', '/articles', fn () => $container->getController(ViewArticleController::class)->index());
 $router->map('GET', '/articles/create', fn () => $container->getController(ViewArticleController::class)->create());
+$router->map('GET', '/articles/edit', fn () => $container->getController(ViewArticleController::class)->edit($_GET));
 
 //---Routes pour les api
 
 $router->map('GET', '/api/articles', fn () => $container->getController(ArticleController::class)->index($_GET));
+$router->map('GET', '/api/articles/find', fn () => $container->getController(ArticleController::class)->edit($_GET));
+$router->map('POST', '/api/articles/update', fn () => $container->getController(ArticleController::class)->update());
 $router->map('POST', '/api/articles/create', fn () => $container->getController(ArticleController::class)->create());
 $router->map('POST', '/api/articles/delete', fn () => $container->getController(ArticleController::class)->delete());
 
