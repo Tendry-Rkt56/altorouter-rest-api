@@ -103,7 +103,7 @@ async function deleteElement()
 
 if (storage) {
      if (Object.keys(storage).length != 0) flashMessage(storage.message, storage.type, flash)
-     localStorage.removeItem()
+     localStorage.removeItem("message");
 }
 
 (async function append() {
