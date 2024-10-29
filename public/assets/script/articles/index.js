@@ -53,34 +53,41 @@ function populateTable(data, container)
      thead.appendChild(headerRow)
 
      const tbody = document.createElement('tbody')
-     data.forEach(element => {
-          const tr = document.createElement('tr')
-          const price = element.price.toLocaleString('fr-FR', {
-               minimumFractionDigits: 2,
-               maximumFractionDigits: 2,
+     if (data.length > 0) {
+          data.forEach(element => {
+               const tr = document.createElement('tr')
+               const price = element.price.toLocaleString('fr-FR', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+               })
+               tr.setAttribute('data', element.id)
+     
+               tr.appendChild(createCell(element.id))
+               tr.appendChild(createCell(element.name))
+               tr.appendChild(createCell(price + ' Ar', {class: 'fw-bolder'}))
+     
+               const actionsCell = createCell('', { 'class': 'd-flex gap-1' })
+               const edit = document.createElement('a')
+               edit.setAttribute('href', '/articles/edit?id='+element.id)
+               edit.setAttribute('class', 'btn btn-sm btn-primary')
+               edit.textContent = "Éditer"
+               
+               const suppr = document.createElement('button')
+               suppr.setAttribute('class', 'btn btn-sm btn-danger suppr')
+               suppr.textContent = "Supprimer"
+     
+               actionsCell.appendChild(edit)
+               actionsCell.appendChild(suppr)
+               tr.appendChild(actionsCell)
+     
+               tbody.appendChild(tr)
           })
-          tr.setAttribute('data', element.id)
-
-          tr.appendChild(createCell(element.id))
-          tr.appendChild(createCell(element.name))
-          tr.appendChild(createCell(price + ' Ar', {class: 'fw-bolder'}))
-
-          const actionsCell = createCell('', { 'class': 'd-flex gap-1' })
-          const edit = document.createElement('a')
-          edit.setAttribute('href', '/articles/edit?id='+element.id)
-          edit.setAttribute('class', 'btn btn-sm btn-primary')
-          edit.textContent = "Éditer"
-          
-          const suppr = document.createElement('button')
-          suppr.setAttribute('class', 'btn btn-sm btn-danger suppr')
-          suppr.textContent = "Supprimer"
-
-          actionsCell.appendChild(edit)
-          actionsCell.appendChild(suppr)
-          tr.appendChild(actionsCell)
-
+     }
+     else {
+          const tr = document.createElement('tr')
+          tr.appendChild(createCell("Pas d'article disponible", {colspan:5}))
           tbody.appendChild(tr)
-     })
+     }
 
      container.appendChild(thead)
      container.appendChild(tbody)
