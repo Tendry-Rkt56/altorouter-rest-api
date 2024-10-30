@@ -39,15 +39,15 @@ Ce projet est une API REST simple développée en PHP, utilisant AltoRouter pour
 1. **Exécution du fichier SQL** : Exécutez `database.sql` dans votre SGBD pour initialiser la base de données.
 
 2. **Modifier `Constante.php`** : Ajustez les constantes de connexion à votre base de données.
-     ![illustration](public/image/constante.png)
+     ![illustration](public/illustrations/constante.png)
 
 3. **Modifier `header.php` (optionnel)** : 
    - Assurez-vous que les en-têtes de réponse correspondent à vos besoins, par exemple, pour spécifier le type de contenu :
-     ![illustration](public/image/header.png)
+     ![illustration](public/illustrations/header.png)
 
 4. **Démarrer le serveur** : 
    - Ouvrez le terminal, naviguez jusqu'au répertoire du projet, et exécutez :
-   
+
      ```bash
      php -S localhost:8000 -t public
 
