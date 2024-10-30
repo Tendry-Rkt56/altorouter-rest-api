@@ -37,19 +37,20 @@ Ce projet est une API REST simple développée en PHP, utilisant AltoRouter pour
 
 ## Installation
 1. **Exécution du fichier SQL** : Exécutez `database.sql` dans votre SGBD pour initialiser la base de données.
+
 2. **Modifier `Constante.php`** : Ajustez les constantes de connexion à votre base de données.
      ![illustration](public/image/constante.png)
-3. **Modifier `header.php`** : 
+
+3. **Modifier `header.php` (optionnel)** : 
    - Assurez-vous que les en-têtes de réponse correspondent à vos besoins, par exemple, pour spécifier le type de contenu :
-     ```php
-     header("Content-Type: application/json");
-     header("Access-Control-Allow-Origin: *");
-     ```
+     ![illustration](public/image/header.png)
+
 4. **Démarrer le serveur** : 
    - Ouvrez le terminal, naviguez jusqu'au répertoire du projet, et exécutez :
-     ```
+   
+     ```bash
      php -S localhost:8000 -t public
-     ```
+
    - Ou utilisez un serveur de développement comme XAMPP ou WAMP.
 
 ## Contributions
