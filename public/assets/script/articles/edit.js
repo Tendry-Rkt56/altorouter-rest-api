@@ -23,7 +23,7 @@ form.addEventListener("submit", async (e) => {
                     message: 'Article N°'+id+" mis à jour",
                     type: "success",
                }))
-               window.location.href = "/articles"
+               window.location.href = "/"
           }
      }
 })

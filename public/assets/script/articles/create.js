@@ -19,7 +19,7 @@ form.addEventListener('submit', async (e) => {
                     message: 'Nouvel article crée',
                     type: "success",
                }))
-               window.location.href = "/articles"
+               window.location.href = "/"
           }
      }
 })

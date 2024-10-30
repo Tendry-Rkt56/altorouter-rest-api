@@ -10,7 +10,7 @@ $router = new AltoRouter();
 
 $container = new Container();
 
-$router->map('GET', '/articles', fn () => $container->getController(ViewArticleController::class)->index());
+$router->map('GET', '/', fn () => $container->getController(ViewArticleController::class)->index());
 $router->map('GET', '/articles/create', fn () => $container->getController(ViewArticleController::class)->create());
 $router->map('GET', '/articles/edit', fn () => $container->getController(ViewArticleController::class)->edit($_GET));
 
