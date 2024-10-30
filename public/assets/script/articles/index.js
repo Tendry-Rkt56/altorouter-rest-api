@@ -7,7 +7,11 @@ const flash = document.querySelector('.flashMessage')
 const search = document.getElementById('search')
 const port = window.location.port
 const storage = JSON.parse(localStorage.getItem('message'))
+const form = document.getElementById('form')
 
+form.addEventListener('submit', (e) => {
+     e.preventDefault()
+})
 
 function createTd(valeur, options = {})
 {
